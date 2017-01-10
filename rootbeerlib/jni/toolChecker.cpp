@@ -68,11 +68,11 @@ int exists(const char *fname)
     FILE *file;
     if (file = fopen(fname, "r"))
     {
-      LOGD("LOOKING FOR BINARY: %s PRESENT!!!",fname);
+      // LOGD("LOOKING FOR BINARY: %s PRESENT!!!",fname);
         fclose(file);
         return 1;
     }
-      LOGD("LOOKING FOR BINARY: %s Absent :(",fname);
+      // LOGD("LOOKING FOR BINARY: %s Absent :(",fname);
     return 0;
 }
 
