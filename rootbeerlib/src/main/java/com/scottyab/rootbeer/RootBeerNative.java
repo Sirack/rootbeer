@@ -14,5 +14,6 @@ public class RootBeerNative {
 
     public native int checkForRoot(Object[] pathArray);
     public native int setLogDebugMessages(boolean logDebugMessages);
+    public native int checkBuildTags();
 
 }

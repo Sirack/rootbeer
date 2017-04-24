@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 
 import com.scottyab.rootbeer.util.QLog;
 
+import org.slf4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -24,10 +26,14 @@ import java.util.Scanner;
  */
 public class RootBeer {
 
-    final Context mContext;
+    private final Context mContext;
+    private Logger mLogger;
+    private ArrayList<String> mRootConvictionReason;
 
-    public RootBeer(Context context) {
+    public RootBeer(Context context, Logger logger) {
         mContext = context;
+        mLogger = logger;
+        mRootConvictionReason = new ArrayList<>();
     }
 
     /**
@@ -58,7 +64,20 @@ public class RootBeer {
         String buildTags = android.os.Build.TAGS;
 
         if (buildTags != null && buildTags.contains("test-keys")) {
+            String reason = "`test-keys` tag was found inside build tags (android.os.Build.TAGS)";
+            mLogger.error(reason);
+            mRootConvictionReason.add(reason);
             return true;
+        }
+        else {
+            RootBeerNative rootBeerNative = new RootBeerNative();
+            if(rootBeerNative.checkBuildTags() > 0) {
+                String reason = "`test-keys` tag was found inside build tags (android.os.Build.TAGS)," +
+                        " convicted by native check!";
+                mLogger.error(reason);
+                mRootConvictionReason.add(reason);
+                return true;
+            }
         }
         return false;
     }
@@ -171,7 +190,9 @@ public class RootBeer {
             File f = new File(completePath);
             boolean fileExists = f.exists();
             if (fileExists) {
-                QLog.v(completePath + " binary detected!");
+                String reason = completePath + " binary detected!";
+                QLog.v(reason); mLogger.error(reason);
+                mRootConvictionReason.add(reason);
                 result = true;
             }
         }
@@ -232,7 +253,9 @@ public class RootBeer {
             try {
                 // Root app detected
                 pm.getPackageInfo(packageName, 0);
-                QLog.e(packageName + " ROOT management app detected!");
+                String reason = packageName + " ROOT management app detected!";
+                QLog.e(reason); mLogger.error(reason);
+                mRootConvictionReason.add(reason);
                 result = true;
             } catch (PackageManager.NameNotFoundException e) {
                 // Exception thrown, package is not installed into the system
@@ -262,7 +285,9 @@ public class RootBeer {
                     String badValue = dangerousProps.get(key);
                     badValue = "[" + badValue + "]";
                     if (line.contains(badValue)) {
-                        QLog.v(key + " = " + badValue + " detected!");
+                        String reason = key + " = " + badValue + " detected!";
+                        QLog.v(reason); mLogger.error(reason);
+                        mRootConvictionReason.add(reason);
                         result = true;
                     }
                 }
@@ -301,9 +326,11 @@ public class RootBeer {
                     for (String option : mountOptions.split(",")){
 
                       if (option.equalsIgnoreCase("rw")){
-                        QLog.v(pathToCheck+" path is mounted with rw permissions! "+line);
-                        result = true;
-                        break;
+                          QLog.v(pathToCheck+" path is mounted with rw permissions! "+line);
+                          mLogger.error(pathToCheck+" path is mounted with rw permissions! "+line);
+                          mRootConvictionReason.add(pathToCheck+" path is mounted with rw permissions! "+line);
+                          result = true;
+                          break;
                       }
                     }
                 }
@@ -323,7 +350,12 @@ public class RootBeer {
         try {
             process = Runtime.getRuntime().exec(new String[] { "/system/xbin/which", "su" });
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            if (in.readLine() != null) return true;
+            if (in.readLine() != null) {
+                String reason = "su binary exits exists (Java check failed!)";
+                mLogger.error(reason);
+                mRootConvictionReason.add(reason);
+                return true;
+            }
             return false;
         } catch (Throwable t) {
             return false;
@@ -346,7 +378,16 @@ public class RootBeer {
 
         RootBeerNative rootBeerNative = new RootBeerNative();
         rootBeerNative.setLogDebugMessages(true);
-        return rootBeerNative.checkForRoot(paths) > 0;
+        int status = rootBeerNative.checkForRoot(paths);
+        if(status > 0) {
+            String reason = "Native test for binaries responsible for rooting found!";
+            mLogger.error(reason);
+            mRootConvictionReason.add(reason);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

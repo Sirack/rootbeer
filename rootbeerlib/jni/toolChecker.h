@@ -15,4 +15,6 @@ void Java_com_scottyab_rootbeer_RootBeerNative_setLogDebugMessages( JNIEnv* env,
   
 int Java_com_scottyab_rootbeer_RootBeerNative_checkForRoot( JNIEnv* env, jobject thiz , jobjectArray pathsArray );
 
+int Java_com_scottyab_rootbeer_RootBeerNative_checkBuildTags(JNIEnv* env, jobject thiz);
+
 }

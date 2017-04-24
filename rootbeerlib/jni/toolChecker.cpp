@@ -18,6 +18,7 @@
 // String / file headers
 #include <string.h>
 #include <stdio.h>
+#include <sys/system_properties.h>
 
 /****************************************************************************
  *>>>>>>>>>>>>>>>>>>>>>>>>>> User Includes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*
@@ -77,6 +78,23 @@ int exists(const char *fname)
 }
 
 
+
+
+int Java_com_scottyab_rootbeer_RootBeerNative_checkBuildTags(JNIEnv* env, jobject thiz) {
+
+    int len;
+    char build_tags[PROP_VALUE_MAX]; // PROP_VALUE_MAX from <sys/system_properties.h>.
+    int result = 0;
+//    #define ANDROID_OS_BUILD_TAGS                "ro.build.tags"                     // Comma-separated tags describing the build, like "unsigned,debug".
+
+    len = __system_property_get("ro.build.tags", build_tags); // On return, len will equal (int)strlen(model_id).
+    if(len > 0 && strstr(build_tags,"test-keys") != NULL){
+        result = 1;
+    }
+
+    return result;
+
+}
 
 
 /*****************************************************************************
