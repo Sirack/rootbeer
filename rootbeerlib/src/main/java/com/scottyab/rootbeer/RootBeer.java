@@ -36,6 +36,10 @@ public class RootBeer {
         mRootConvictionReason = new ArrayList<>();
     }
 
+    public ArrayList<String> getReason() {
+        return mRootConvictionReason;
+    }
+
     /**
      * Run all the checks
      * @return true, we think there's a good *indication* of root | false good *indication* of no root (could still be cloaked)
