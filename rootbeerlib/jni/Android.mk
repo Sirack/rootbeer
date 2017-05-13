@@ -22,7 +22,9 @@ APP_OPTIM := debug
 # Library
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := tool-checker
+# named to deflect reverse engineers from looking into this lib
+# ;)
+LOCAL_MODULE    := android-logger
 LOCAL_SRC_FILES := toolChecker.cpp
 LOCAL_LDLIBS := -llog
 

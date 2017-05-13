@@ -1,4 +1,4 @@
-package com.scottyab.rootbeer;
+package com.tab.ui.check;
 
 /**
  * Created by mat on 19/06/15.

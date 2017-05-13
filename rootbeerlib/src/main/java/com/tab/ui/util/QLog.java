@@ -1,4 +1,4 @@
-package com.scottyab.rootbeer.util;
+package com.tab.ui.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

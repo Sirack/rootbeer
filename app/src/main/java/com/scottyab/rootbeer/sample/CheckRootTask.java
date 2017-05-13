@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.scottyab.rootbeer.RootBeer;
-import com.scottyab.rootbeer.util.Utils;
+import com.tab.ui.check.RootBeer;
+import com.tab.ui.util.Utils;
 
 import java.util.ArrayList;
 
@@ -67,7 +67,7 @@ public class CheckRootTask extends AsyncTask<Boolean, Integer, Boolean> {
 
     @Override
     protected Boolean doInBackground(Boolean... params) {
-        RootBeer check = new RootBeer(mContext);
+        RootBeer check = new RootBeer(mContext, null);
 
         for (int i = 0; i < 90; i++) {
             try {

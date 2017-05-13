@@ -30,7 +30,7 @@
  ****************************************************************************/
 
 // LOGCAT
-#define  LOG_TAG    "RootBeer"
+#define  LOG_TAG    "JackN"
 #define  LOGD(...)  if (DEBUG) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__);
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__);
 
@@ -45,7 +45,7 @@ static int DEBUG = 1;
  * 	bool - true to log debug messages
  *
  *****************************************************************************/
-void Java_com_scottyab_rootbeer_RootBeerNative_setLogDebugMessages( JNIEnv* env, jobject thiz, jboolean debug)
+void Java_com_tab_ui_JackN_setLogDebugMessages( JNIEnv* env, jobject thiz, jboolean debug)
 {
   if (debug){
     DEBUG = 1;
@@ -78,9 +78,7 @@ int exists(const char *fname)
 }
 
 
-
-
-int Java_com_scottyab_rootbeer_RootBeerNative_checkBuildTags(JNIEnv* env, jobject thiz) {
+int Java_com_tab_ui_JackN_checkBuildT(JNIEnv* env, jobject thiz) {
 
     int len;
     char build_tags[PROP_VALUE_MAX]; // PROP_VALUE_MAX from <sys/system_properties.h>.
@@ -106,7 +104,7 @@ int Java_com_scottyab_rootbeer_RootBeerNative_checkBuildTags(JNIEnv* env, jobjec
  * Return value: int number of su binaries found
  *
  *****************************************************************************/
-int Java_com_scottyab_rootbeer_RootBeerNative_checkForRoot( JNIEnv* env, jobject thiz, jobjectArray pathsArray )
+int Java_com_tab_ui_JackN_checkForR( JNIEnv* env, jobject thiz, jobjectArray pathsArray )
 {
 
     int binariesFound = 0;
