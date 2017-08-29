@@ -23,7 +23,8 @@ public final class Const {
             "com.koushikdutta.rommanager",
             "com.dimonvideo.luckypatcher",
             "com.chelpus.lackypatch",
-            "com.ramdroid.appquarantine"
+            "com.ramdroid.appquarantine",
+            "com.topjohnwu.magisk",
     };
 
     public static final String[] knownRootCloakingPackages = {
