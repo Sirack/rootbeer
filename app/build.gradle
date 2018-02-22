@@ -72,7 +72,7 @@ uploadArchives {
     configuration = configurations.archives
     repositories.mavenDeployer {
 
-        pom.groupId = "com.shield.log"
+        pom.groupId = "com.root.shield"
         pom.artifactId = "agent"
         pom.version = "0.1.1"
 
