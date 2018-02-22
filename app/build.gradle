@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion compileSdkVer
-    buildToolsVersion buildToolsVer
+//    buildToolsVersion buildToolsVer
 
     defaultConfig {
         applicationId "com.scottyab.rootbeer.sample"
@@ -10,6 +10,8 @@ android {
         targetSdkVersion targetSdkVer
         versionCode 4
         versionName "0.4"
+        minSdkVersion 14
+        targetSdkVersion 27
     }
 
     //check if the keystore details are defined in gradle.properties (this is so the key is not in github)
