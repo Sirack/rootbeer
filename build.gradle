@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
@@ -26,8 +27,6 @@ allprojects {
     repositories {
         jcenter()
 
-        google()
-
         maven {
             url "https://api.bitbucket.org/1.0/repositories/sirackh/shield-log/raw/releases"
             credentials {
@@ -35,6 +34,7 @@ allprojects {
                 password BITBUCKET_REPOSITORY_PASSWORD
             }
         }
+        google()
     }
 }
 
