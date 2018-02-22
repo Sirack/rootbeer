@@ -78,7 +78,7 @@ uploadArchives {
 
         pom.groupId = "com.root.shield"
         pom.artifactId = "agent"
-        pom.version = "0.1.1"
+        pom.version = "0.1.2"
 
         // ~/.gradle/gradle.properties (file)
         // BITBUCKET_REPOSITORY_USERNAME=

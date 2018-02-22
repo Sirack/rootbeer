@@ -44,10 +44,14 @@ allprojects {
     }
 }
 
-subprojects {
-    ext.compileSdkVer = 27
-//    ext.buildToolsVer = "26.0.2"
-    ext.minSdkVer = 14
-    ext.targetSdkVer = 27
-    ext.supportLibVer = "27.0.2"
-}
+ext.compileSdkVer = 27
+ext.minSdkVer = 14
+ext.targetSdkVer = 27
+ext.supportLibVer = "27.0.2"
+
+//subprojects {
+//    ext.compileSdkVer = 27
+//    ext.minSdkVer = 14
+//    ext.targetSdkVer = 27
+//    ext.supportLibVer = "27.0.2"
+//}
