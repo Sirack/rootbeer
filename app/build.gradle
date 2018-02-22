@@ -3,7 +3,6 @@ apply plugin: 'maven'
 
 android {
     compileSdkVersion compileSdkVer
-//    buildToolsVersion buildToolsVer
 
     defaultConfig {
         applicationId "com.scottyab.rootbeer.sample"
