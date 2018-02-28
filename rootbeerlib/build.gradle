@@ -26,7 +26,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.shield.log:agent:0.1.8'
+    compile 'com.shield.log:agent:0.1.9'
 }
 
 configurations {
@@ -50,7 +50,7 @@ uploadArchives {
 
         pom.groupId = "com.root.shield"
         pom.artifactId = "agent"
-        pom.version = "0.1.6"
+        pom.version = "0.1.7"
 
         // ~/.gradle/gradle.properties (file)
         // BITBUCKET_REPOSITORY_USERNAME=
