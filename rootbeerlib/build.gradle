@@ -25,9 +25,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-//    compile 'com.shield.log:agent:0.1.12'
-    compile 'com.shield.log:agent:0.1.26'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.shield.log:agent:0.1.26'
 }
 
 configurations {
@@ -35,7 +34,7 @@ configurations {
 }
 
 dependencies {
-    deployerJar "ar.com.synergian:wagon-git:0.2.5"
+    deployerJar "ar.com.synergian:wagon-git:0.3.0"
 }
 
 

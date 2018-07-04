@@ -8,6 +8,7 @@ android {
         applicationId "com.scottyab.rootbeer.sample"
         minSdkVersion minSdkVer
         targetSdkVersion targetSdkVer
+        multiDexEnabled true
         versionCode 4
         versionName "0.4"
     }
@@ -49,6 +50,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':rootbeerlib')
     implementation "com.android.support:appcompat-v7:$supportLibVer"
+    implementation "com.android.support:multidex:1.0.3"
     implementation "com.android.support:design:$supportLibVer"
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'uk.co.barbuzz:beerprogressview:0.0.4'
