@@ -211,15 +211,18 @@ public class RootBeer {
 
     private String[] propsReader() {
         InputStream inputstream = null;
-        try {
-            inputstream = Runtime.getRuntime().exec("getprop").getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         String propval = "";
         try {
-            propval = new Scanner(inputstream).useDelimiter("\\A").next();
+            inputstream = Runtime.getRuntime().exec("getprop").getInputStream();
+            // see crash, input stream might be null
+            // https://fabric.io/better2/android/apps/com.better.active.shield.enterprise/issues/5b6419c26007d59fcda82abf?time=last-seven-days
+            if(inputstream != null) {
+                propval = new Scanner(inputstream).useDelimiter("\\A").next();
+                inputstream.close();
+            }
 
+        } catch (IOException e) {
+            QLog.e(e);
         } catch (NoSuchElementException e) {
             QLog.e("Error getprop, NoSuchElementException: " +e.getMessage(), e);
         }
