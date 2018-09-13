@@ -8,6 +8,7 @@ android {
     defaultConfig {
         minSdkVersion minSdkVer
         targetSdkVersion targetSdkVer
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
     }
@@ -26,7 +27,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.shield.log:agent:0.1.32'
+    implementation 'com.shield.log:agent:0.1.32'
 }
 
 configurations {
@@ -50,7 +51,7 @@ uploadArchives {
 
         pom.groupId = "com.root.shield"
         pom.artifactId = "agent"
-        pom.version = "0.1.12"
+        pom.version = "0.1.13"
 
         // ~/.gradle/gradle.properties (file)
         // BITBUCKET_REPOSITORY_USERNAME=
