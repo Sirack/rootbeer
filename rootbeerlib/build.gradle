@@ -27,7 +27,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.shield.log:agent:0.1.32'
+    implementation 'com.shield.log:agent:0.1.33'
 }
 
 configurations {

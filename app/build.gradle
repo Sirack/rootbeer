@@ -54,4 +54,14 @@ dependencies {
     implementation "com.android.support:design:$supportLibVer"
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'uk.co.barbuzz:beerprogressview:0.0.4'
+
+    implementation 'org.slf4j:slf4j-api:1.7.21'
+    implementation 'com.github.tony19:logback-android-core:1.1.1-6'
+    implementation('com.github.tony19:logback-android-classic:1.1.1-6') {
+        // workaround issue #73
+        exclude group: 'com.google.android', module: 'android'
+    }
+    implementation ('com.papertrailapp:logback-syslog4j:1.0.0'){
+        exclude group: 'ch.qos.logback'
+    }
 }
